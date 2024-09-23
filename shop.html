@@ -1,0 +1,58 @@
+  <!DOCTYPE html>
+       <html>
+
+       <head>
+         <meta charset="utf-8">
+         <meta name="viewport" content="width=device-width">
+         <link href="index.css" rel="stylesheet" type="text/css" />
+         <title>Moja webstranka</title>
+       </head>
+
+       <body>
+         <table border="1" width="100%" height="100%">
+           <tr>
+             <td width="100%" colspan="2"><a href="index.html">Naj recepty pre lenivé mamičky</a></td>
+           </tr>
+           <td height="100%" width="20%" align="center" valign="top">
+             <a href="muffiny.html">Muffiny pre lenivé maminy</a><br>
+             <a href="re.html">Tacos</a><br>
+             <a href="segedin.html">Segedin</a><br>
+             <a href="Syrový doust.html">Syrový doust</a><br>
+             <a href="Smotana.html">Smotanová torta</a><br>
+             <a href="shop.html">Shop</a>
+           </td>
+           <td width="80%">
+              <img src="images/panvica.jpeg" height="500"width="500">
+             <p>Ocelova panvica </p>
+             <button onclick="script()">Kúpiť</button>
+ <form class="hidden" id="formular" style="position: absolute; top: 50%; left: 60%; transform: translate(-50%, -50%);">
+   <label for="gender">Pohlavie:</label><br>
+   <input type="radio" id="male" name="gender" value="male">
+   <label for="male">Muž</label>
+   <input type="radio" id="female" name="gender" value="female">
+   <label for="female">Žena</label><br>
+   <label for="firstName">Meno:</label><br>
+   <input type="text" id="firstName" name="firstName"><br>
+   <label for="lastName">Priezvisko:</label><br>
+   <input type="text" id="lastName" name="lastName"><br><br>
+   <input type="tel" id="phone" name="phone" placeholder="Mobilné číslo" pattern="[0-9]{9,15}" title="Zadajte platné telefónne číslo (9-15 číslic)"><br>
+   <input type="email" id="email" name="email" placeholder="Emailová adresa" pattern="[^@]+@[^\.]+\..+"><br><br>
+   <input type="submit" value="Odoslať">
+ </form>
+           </tr>
+           <tr>
+             <td width="100%" colspan="2">Copyright © Recepty pre lenivé maminy</td>
+           </tr>
+         </table>
+
+
+ <script>
+   function script() {
+     var form = document.querySelector("form");
+     form.classList.remove("hidden");
+   }
+ </script>
+
+       </body>
+
+       </html>

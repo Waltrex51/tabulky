@@ -1,0 +1,59 @@
+* {
+  margin: 0%;
+  padding: 0%;
+}
+
+body {
+  height: 100%;
+}
+
+html {
+  height: 100%;
+}
+
+a1 {
+  text-decoration: underline;
+}
+
+a1:hover {
+  color: green;
+  transition: 500ms ease;
+}
+
+a2 {
+  text-decoration: underline;
+}
+
+a2:hover {
+  color: red;
+  transition: 500ms ease;
+}
+
+a3 {
+  text-decoration: underline;
+}
+
+a3:hover {
+  color: orange;
+  transition: 500ms ease;
+}
+
+a4 {
+  text-decoration: underline;
+}
+
+a4:hover {
+  color: blue;
+  transition: 500ms ease;
+}
+
+.hidden {
+  display: none;
+}
+
+#formular {
+  background-color: gray;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px;
+}
