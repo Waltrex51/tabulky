@@ -1,37 +1,78 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="sk">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <link href="index.css" rel="stylesheet" type="text/css" />
-  <title>Moja webstranka</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Domov</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            flex-direction: column; /* Allows top bar to sit above content */
+        }
+        .topbar {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: right;
+        }
+        .topbar a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+        }
+        .topbar a:hover {
+            text-decoration: underline;
+        }
+        .sidebar {
+            width: 200px;
+            background-color: #4CAF50;
+            padding: 20px;
+            color: white;
+            height: calc(100% - 50px); /* Adjust height for top bar */
+            position: fixed;
+            top: 50px; /* Adjust position */
+        }
+        .sidebar a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            margin: 10px 0;
+        }
+        .sidebar a:hover {
+            text-decoration: underline;
+        }
+        .content {
+            margin-left: 220px; /* Leave space for sidebar */
+            padding: 20px;
+            flex: 1;
+            margin-top: 10px; /* Space below top bar */
+        }
+        h1 {
+            color: #333;
+        }
+    </style>
 </head>
-
 <body>
-  <table border="1" width="100%" height="100%">
-    <tr>
-      <td width="100%" colspan="2"><a href="index.html">Naj recepty pre lenivé mamičky</a></td>
-    </tr>
-    <td height="100%" width="20%" align="center" valign="top">
-      <a href="muffiny.html">Muffiny pre lenivé maminy</a><br>
-      <a href="re.html">Tacos</a><br>
-      <a href="segedin.html">Segedin</a><br>
-      <a href="Syrový doust.html">Syrový doust</a><br>
-      <a href="Smotana.html">Smotanová torta</a><br>
-      <a href="shop.html">Shop</a>
-    </td>
-    <td width="80%">
-      <p>Ste mamička z obmedzeným časom tak tieto recepty sú presne pre vás</p>
-      <img src="images/kuch.jpg" height="500" width="500">
-    </td>
-    </tr>
-    <tr>
-      <td width="100%" colspan="2">Copyright © Recepty pre lenivé maminy</td>
-    </tr>
-  </table>
-  <script></script>
+
+<div class="topbar">
+    <a href="Formular.html">Sign Up</a>
+    <a href="Formular.html">Sign In</a>
+</div>
+
+<div class="sidebar">
+    <h2>Menu</h2>
+    <a href="shop.html">Shop</a>
+</div>
+
+<div class="content">
+    <h1>Vitajte na stránke Domov</h1>
+    <p></p>
+    
+</div>
 
 </body>
-
 </html>

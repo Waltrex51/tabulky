@@ -1,303 +1,112 @@
 <!DOCTYPE html>
-<html>
+<html lang="sk">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>Tajný Klub</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background-color: #f4f4f4;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
-
-    .container {
-      background-color: #fff;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      padding: 20px;
-      text-align: center;
-    }
-
-    img {
-      width: 100px;
-      height: 100px;
-      margin-bottom: 20px;
-    }
-
-    h2 {
-      margin-bottom: 10px;
-    }
-
-    .form-group {
-      margin-bottom: 15px;
-    }
-
-    input[type="text"], input[type="password"] {
-      width: 100%;
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      box-sizing: border-box;
-    }
-
-    button {
-      background-color: #4CAF50;
-      color: white;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-    .buttons {
-      display: flex;
-      justify-content: space-around;
-      margin-top: 20px;
-    }
-
-    
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 1;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      overflow: auto;
-      background-color: rgb(0, 0, 0);
-      background-color: rgba(0, 0, 0, 0.4);
-      padding-top: 60px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .modal-content {
-      background-color: #fefefe;
-      padding: 20px;
-      border: 1px solid #888;
-      width: 80%;
-      text-align: center; /* Vycentruj text v okne */
-    }
-
-    /* Štýly pre zatvorenie okna */
-    .close {
-      color: #aaa;
-      float: right;
-      font-size: 28px;
-      font-weight: bold;
-    }
-
-    .close:hover,
-    .close:focus {
-      color: black;
-      text-decoration: none;
-      cursor: pointer;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrácia</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .sidebar {
+            width: 200px;
+            background-color: #4CAF50;
+            padding: 20px;
+            color: white;
+            height: 100%;
+            position: fixed;
+        }
+        .sidebar a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            margin: 10px 0;
+        }
+        .sidebar a:hover {
+            text-decoration: underline;
+        }
+        .content {
+            margin-left: 220px; /* Leave space for sidebar */
+            padding: 20px;
+            flex: 1;
+        }
+        .popup {
+            display: none; /* Initially hidden */
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 300px;
+            text-align: center;
+            position: absolute; /* Make it appear on top */
+            top: 50%; /* Center vertically */
+            left: 50%; /* Center horizontally */
+            transform: translate(-50%, -50%); /* Centering */
+        }
+        .logo {
+            width: 100px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
 </head>
 <body>
-  <button id="open-modal">Kúpiť</button>
 
-  <div id="myModal" class="modal">
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <h2>Vitajte v Tajnom Klube</h2>
-      <img src="images/moriak.jpg" alt="moriak.jpg">
-      <div class="form-group">
-        <label for="nick">Nick:</label>
-        <input type="text" id="nick" name="nick" placeholder="Zadajte nick">
-      </div>
-      <div class="form-group">
-        <label for="password">Heslo:</label>
-        <input type="password" id="password" name="password" placeholder="Zadajte heslo">
-      </div>
-      <div class="buttons">
-        <button type="button">Registrovať</button>
-        <button type="button">Prihlásiť</button>
-      </div>
+<div class="sidebar">
+    <h2>Menu</h2>
+      <a href="index.html">domov</a>
+</div>
+
+<div class="content">
+    <button onclick="showPopup()">Kúpiť</button>
+
+    <div class="popup" id="registrationPopup">
+        <img src="moriak.png" alt="Logo" class="logo">
+        <h2>Vitajete v supertajnej stranke</h2>
+        <input type="text" placeholder="Nick" required>
+        <input type="password" placeholder="Heslo" required>
+        <button onclick="register()">Registrácia</button>
+        <button onclick="closePopup()">Zavrieť</button>
     </div>
-  </div>
+</div>
 
-  <script>
-    // Otvorenie okna
-    var modal = document.getElementById("myModal");
-    var btn = document.getElementById("open-modal");
-    var span = document.getElementsByClassName("close")[0];
-
-    btn.onclick = function() {
-      modal.style.display = "block";
+<script>
+    function showPopup() {
+        document.getElementById('registrationPopup').style.display = 'block';
     }
 
-    // Zatvorenie okna
-    span.onclick = function() {
-      modal.style.display = "none";
+    function closePopup() {
+        document.getElementById('registrationPopup').style.display = 'none';
     }
 
-    // Zatvorenie okna kliknutím mimo okna
-    window.onclick = function(event) {
-      if (event.target == modal) {
-        modal.style.display = "none";
-      }
+    function register() {
+        // Here you can handle the registration logic
+        alert("Registrácia prebehla úspešne!");
     }
-  </script>
-</body>
-</html><!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>Tajný Klub</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background-color: #f4f4f4;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
+</script>
 
-    .container {
-      background-color: #fff;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      padding: 20px;
-      text-align: center;
-    }
-
-    img {
-      width: 100px;
-      height: 100px;
-      margin-bottom: 20px;
-    }
-
-    h2 {
-      margin-bottom: 10px;
-    }
-
-    .form-group {
-      margin-bottom: 15px;
-    }
-
-    input[type="text"], input[type="password"] {
-      width: 100%;
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      box-sizing: border-box;
-    }
-
-    button {
-      background-color: #4CAF50;
-      color: white;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-    .buttons {
-      display: flex;
-      justify-content: space-around;
-      margin-top: 20px;
-    }
-
-    /* Štýly pre čierne pozadie a okno s obsahom */
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 1;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      overflow: auto;
-      background-color: rgb(0, 0, 0);
-      background-color: rgba(0, 0, 0, 0.4);
-      padding-top: 60px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .modal-content {
-      background-color: #fefefe;
-      padding: 20px;
-      border: 1px solid #888;
-      /* Nastavenie šírky a výšky na rovnaké hodnoty pre štvorcový tvar */
-      width: 300px; 
-      height: 300px; 
-      text-align: center; /* Vycentruj text v okne */
-    }
-
-    /* Štýly pre zatvorenie okna */
-    .close {
-      color: #aaa;
-      float: right;
-      font-size: 28px;
-      font-weight: bold;
-    }
-
-    .close:hover,
-    .close:focus {
-      color: black;
-      text-decoration: none;
-      cursor: pointer;
-    }
-  </style>
-</head>
-<body>
-  <button id="open-modal">Kúpiť</button>
-
-  <div id="myModal" class="modal">
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <h2>Vitajte v Tajnom Klube</h2>
-      <img src="your_image.png" alt="Tajný Klub">
-      <div class="form-group">
-        <label for="nick">Nick:</label>
-        <input type="text" id="nick" name="nick" placeholder="Zadajte nick">
-      </div>
-      <div class="form-group">
-        <label for="password">Heslo:</label>
-        <input type="password" id="password" name="password" placeholder="Zadajte heslo">
-      </div>
-      <div class="buttons">
-        <button type="button">Registrovať</button>
-        <button type="button">Prihlásiť</button>
-      </div>
-    </div>
-  </div>
-
-  <script>
-    // Otvorenie okna
-    var modal = document.getElementById("myModal");
-    var btn = document.getElementById("open-modal");
-    var span = document.getElementsByClassName("close")[0];
-
-    btn.onclick = function() {
-      modal.style.display = "block";
-    }
-
-    // Zatvorenie okna
-    span.onclick = function() {
-      modal.style.display = "none";
-    }
-
-    // Zatvorenie okna kliknutím mimo okna
-    window.onclick = function(event) {
-      if (event.target == modal) {
-        modal.style.display = "none";
-      }
-    }
-  </script>
 </body>
 </html>
+
